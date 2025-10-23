@@ -1,0 +1,107 @@
+:root {
+  --bg-dark: #0e0e0e;
+  --bg-layer1: #bfd8d2;
+  --bg-layer2: #a3b18a;
+  --bg-layer3: #c84b31;
+  --bg-layer4: #d88a3f;
+  --bg-layer5: #2b2b2b;
+  --text-light: #f5f5f5;
+  --text-highlight: #bdaa6c;
+  --text-bone: #eae6da;
+
+  /* typography scaling */
+  --font-base: 1rem;
+  --font-scale: 1.2;
+}
+
+html {
+  font-size: 100%; /* 1rem = default */
+}
+body {
+  margin: 0;
+  color: var(--text-light);
+  background: var(--bg-dark);
+  font-family: "Times New Roman", serif;
+  line-height: 1.4;
+}
+
+h1, h2 {
+  margin: 0.5em 0;
+  color: var(--text-highlight);
+  font-family: serif;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+h2 {
+  font-size: clamp(1.5rem, 3vw, 3rem);
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* PAGE 1 – Vertical Layers */
+section.layer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+section.layer:hover {
+  transform: scale(1.02);
+}
+
+#ordovician { background: var(--bg-layer1); }
+#devonian    { background: var(--bg-layer2); }
+#permian     { background: var(--bg-layer3); }
+#triassic    { background: var(--bg-layer4); }
+#cretaceous  { background: var(--bg-layer5); }
+
+/* PAGE 2 – Horizontal Timeline */
+.timeline {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100vh;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+}
+.timeline .event {
+  flex: 0 0 80vw;
+  height: calc(100vh - 80px);
+  margin: 0 5vw;
+  background: #1f1f1f;
+  border: 1px solid #444;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  scroll-snap-align: center;
+}
+.event .label {
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline .event {
+    flex: 0 0 90vw;
+    margin: 0 5vw;
+    padding: 20px;
+  }
+}
